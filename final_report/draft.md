@@ -6,6 +6,7 @@
 
 The following workflow diagram describes our modeling process from start to finish:
 ![Figure 1: Workflow Diagram of Project Process](../visualizations/workflow.png)
+
 *Figure 1: Workflow Diagram of Project Process*
 <p>The final model revealed that certain weather-related factors, such as temperature 
 and precipitation, were key predictors of rental demand. By leveraging these insights, bike-share companies can schedule maintenance during lower-demand periods and maximize availability during peak times. Ultimately, the study addresses the business question by providing a model that the bike rental company can use to predict daily demand and to better meet customer needs.
@@ -38,6 +39,7 @@ This study addresses the need for an accurate and interpretable model to predict
 
 The following fishbone diagram in Figure 2 represents the assumptions made about the data. These are the factors that go into determining whether people will be encouraged to use bikes as an alternative mode of transportation:
 ![Figure 2: Fishbone diagram showing assumptions made about major variables predicting bike count.](../visualizations/fishbone_final.png)
+
 *Figure 2: Fishbone diagram showing assumptions made about major variables predicting bike count.*
 In addition to these assumptions, another main assumption was that customers were checking the weather before deciding to rent a bike.
 The research problem, effectively predicting daily rental demand to schedule maintenance, was decomposed into a target (daily rented bike count) and features that could reasonably be forecasted in advance:
@@ -160,6 +162,7 @@ To analyze the effect of the new feature set on the target variable, a correlati
 
 To build a proper linear regression model, the dataset required normalization. As a solution, the Yeo-Johnson transformer was used on the most skewed features: Rainfall, Snowfall, and Precipitation. This transformation is similar to the log-like Box-Cox transformation, where data is right-skewed and it brings the values closer to 0 while keeping their relative distance. The difference is that this transformation allows for non-positive values as input. This transforms non-normal dependent values into a more normal (Gaussian) shape (Yeo et al., 2000).
 ![Equation 1: Yeo-Johnson transformer equation.](../visualizations/Yeo-Johnson%20Equation.png)
+
 *Equation 1: Yeo-Johnson transformer equation.*
 
 <p>The scaler used —StandardScaler, a z-score-based scaler from scikit-learn— standardizes features that originally existed in different units. However, StandardScaler assumes that the input data follows a roughly normal distribution. Transforming the data first, ensures that this assumption is met, ensuring that each feature has an equally proportional contribution to the model training.
@@ -212,6 +215,7 @@ The tested hyperparameter search spaces were chosen based on each model's charac
 For the final model, a 5-fold shuffled cross-validation strategy was employed to ensure that the meta-model was trained on a variety of samples, reducing the risk of overfitting. The base estimators were Huber and ElasticNet, and their predictions served as input to the final estimator, Ridge. Huber was selected to ensure robustness against outliers, while ElasticNet handled multicollinearity and provided feature stability. Ridge was chosen as the meta-model due to its ability to manage collinear inputs from the base models and produce a smooth, generalized final output.
 
 ![Figure 5: Visualization of stacking regressor.](../visualizations/modeling_flow.png)
+
 *Figure 5: Visualization of stacking regressor.*
 
 The hyperparameters and metrics for models in the final model are as follows:
@@ -230,7 +234,8 @@ The hyperparameters and metrics for models in the final model are as follows:
 | Mean Squared Error (MSE)	| 14,160,869.86 | 14,458,515.98 | -297,646.12 |
 | Root Mean Squared Error (RMSE)	| 3,763.09 | 3,802.44 | -39.35 |
 
-*Table 10: Table of metrics in the finalized model.*     
+*Table 10: Table of metrics in the finalized model.*
+
 ![Figure 6 & 7:  Predicted vs Actual plot for final model & Residual Plot for final model](../visualizations/final_model_results.png)
 *Figure 6 & 7:  Predicted vs Actual plot for final model & Residual Plot for final model*
 ### Equation
