@@ -1,0 +1,15 @@
+Index,Feature Name,Description,Data Type,Categorical/Numerical,Missing Values,# Unique Values,Example Value
+0,Date,The date when the data was recorded.,object,Categorical,0,365,22/03/2018
+1,Rented Bike Count,Number of bikes rented on a given date and hour.,int64,Numerical,0,2166,930
+2,Hour,Hour of the day (0Ð23) during which the data was recorded.,int64,Numerical,0,24,8
+3,Temperature(Â°C),Temperature in degrees Celsius.,float64,Numerical,0,546,7.6
+4,Humidity(%),Percentage of humidity in the air.,int64,Numerical,0,90,37
+5,Wind speed (m/s),Wind speed measured in meters per second.,float64,Numerical,0,65,1.1
+6,Visibility (10m),"Visibility measured in meters (unit is 10m, so 2000 = 20,000 meters).",int64,Numerical,0,1789,2000
+7,Dew point temperature(Â°C),Dew point temperature in degrees Celsius Ñ reflects humidity.,float64,Numerical,0,556,-19.8
+8,Solar Radiation (MJ/m2),Solar radiation energy measured in megajoules per square meter.,float64,Numerical,0,345,0.01
+9,Rainfall(mm),Amount of rainfall in millimeters.,float64,Numerical,0,61,0
+10,Snowfall (cm),Amount of snowfall in centimeters.,float64,Numerical,0,51,0
+11,Seasons,"Season of the year (e.g., Winter, Spring, Summer, Autumn).",object,Categorical,0,4,Winter
+12,Holiday,Indicates whether the day was a holiday (Holiday or No Holiday).,object,Categorical,0,2,No Holiday
+13,Functioning Day,Whether bike-sharing service was operational that day (Yes or No).,object,Categorical,0,2,Yes

@@ -1,0 +1,19 @@
+- normal temperature for a season vs how it deviates from that average
+- how did you come up with thresholds for rejection processes, "top 20 made it," sort table by what overfit, what had best scores, look across line of scores, show mental steps that you went through
+- elaborate on what regressors use
+- cone shape where variance increases the higher the numbers are
+- elaborate on what you did to actually stack the models
+- elaborate on weekend vs weekday
+- in evaluation slide, show and emphasize main predictors (temperature, precipitation), more detail
+- maybe temperature gets too hot, take that into account
+- seasonal important for vacation times/normal temperatures, especially if recreational, seasonal should be separate compared to normal temperatures(?)
+- number references -> put numbers on fishbone
+- advice should focus on what features predict demand "how can the bike company predict daily demand"
+	- our model shows that days with ___ value for X will have lower demand, meaning the company should plan maintenance on a day like this (just an example)
+	- shap beeswarm graph to show insights
+- expand more on next steps
+	- our data is based in seoul, trying new locations
+	- only spans a year, might not fully capture rental behaviour
+- more focus on RMSE, we want to reduce the error in predicted bike counts
+- team 4 overfitting graph
+- improvements show train data too
