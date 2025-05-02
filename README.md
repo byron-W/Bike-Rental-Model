@@ -1,2 +1,2 @@
 # CDS-303
-Data-Mining
+All the code for my Data Mining class
