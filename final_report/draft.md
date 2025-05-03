@@ -7,8 +7,7 @@
 The following workflow diagram describes our modeling process from start to finish:
 ![Figure 1: Workflow Diagram of Project Process](../visualizations/workflow.png)
 
-*Figure 1: Workflow Diagram of Project Process*
-<p>The final model revealed that certain weather-related factors, such as temperature 
+*Figure 1: Workflow Diagram of Project Process*<p>The final model revealed that certain weather-related factors, such as temperature 
 and precipitation, were key predictors of rental demand. By leveraging these insights, bike-share companies can schedule maintenance during lower-demand periods and maximize availability during peak times. Ultimately, the study addresses the business question by providing a model that the bike rental company can use to predict daily demand and to better meet customer needs.
 
 ## Business Question & Background
