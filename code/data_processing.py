@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import StandardScaler # for scaling data
 from sklearn.preprocessing import PowerTransformer
 
@@ -6,15 +7,12 @@ def prepData(df):
     # dropping all days that aren't functioning (only 12)
     df = df.drop(df[df['Functioning Day'] == 'No'].index)
 
-    # creating a precipitation feature that acts as an interaction between rain and snow
-    df['Snowfall (cm)'] = df['Snowfall (cm)'] * 10
     df.rename(columns={
         'Wind speed (m/s)' : 'Wind Speed(m/s)',
-        'Solar Radiation (MJ/m2)' : 'Solar Radiation(MJ/m2)',
-        'Snowfall (cm)' : 'Snowfall(mm)'}, inplace=True)
+        'Solar Radiation (MJ/m2)' : 'Solar Radiation(MJ/m2)'}, inplace=True)
 
 	# dropping features
-    df.drop(['Dew point temperature(C)', 'Hour', 'Holiday', 'Visibility (10m)', 'Functioning Day'], axis = 1, inplace=True)
+    df.drop(['Dew point temperature(C)', 'Hour', 'Holiday', 'Visibility (10m)', 'Snowfall(cm)', 'Functioning Day'], axis = 1, inplace=True)
     
     # One-hot Encoding Seasons
     df = pd.get_dummies(df, columns=['Seasons'], drop_first=False, prefix='', prefix_sep='')
@@ -31,8 +29,7 @@ def prepData(df):
 		'Humidity(%)' : 'mean',
 		'Wind Speed(m/s)': 'mean',
 		'Solar Radiation(MJ/m2)' : 'max',
-		'Rainfall(mm)' : 'sum', # taking the sum of precipitation makes the data more meaningful because we have a lot of hours without it, making it too imbalanced if we avg, this might help
-		'Snowfall(mm)' : 'sum',
+		'Rainfall(mm)' : 'sum', # taking the sum of rain makes the data more meaningful because we have a lot of hours without it, making it too imbalanced if we avg, this might help
 		'Spring' : 'first',
 		'Summer' : 'first',
         'Autumn' : 'first',
@@ -40,8 +37,6 @@ def prepData(df):
         'Weekend' : 'first'
 	}
     df = df.groupby('Date').agg(agg_dict) # turning hourly data into daily data
-    #df['Rain*Temp'] = df['Rainfall (mm)'] + df['Temperature(C)']
-    #df['Precipitation (mm)'] = df['Rainfall (mm)'] + df['Snowfall (mm)']
 
     # # Creating interaction features for each season
     season_cols = ["Summer"]  
@@ -51,7 +46,7 @@ def prepData(df):
 
 def transformData(Xtrain, Xtest, ytrain, ytest):
 	# Taking out our non-numerical features from the scaler
-    scale_columns = ['Temperature(C)', 'Humidity(%)', 'Wind Speed(m/s)', 'Solar Radiation(MJ/m2)', 'Rainfall(mm)', 'Snowfall(mm)', 'Summer*Temp'] # , 'Precipitation (mm)' 
+    scale_columns = ['Temperature(C)', 'Humidity(%)', 'Wind Speed(m/s)', 'Solar Radiation(MJ/m2)', 'Rainfall(mm)', 'Summer*Temp']
     no_scale = ['Spring', 'Summer', 'Autumn', 'Winter', 'Weekend']
 
 	# Separating numerical data from the rest
@@ -70,6 +65,6 @@ def transformData(Xtrain, Xtest, ytrain, ytest):
     scaled_x_test = pd.DataFrame(scaled_x_test, index=Xtest.index, columns=test_to_scale.columns)
     
     # concating the non-numerical data with the numerical
-    Xtrain = pd.concat([scaled_x_train, no_scale_train], axis=1).to_numpy()
-    Xtest = pd.concat([scaled_x_test, no_scale_test], axis=1).to_numpy()
+    Xtrain = pd.concat([scaled_x_train, no_scale_train], axis=1)
+    Xtest = pd.concat([scaled_x_test, no_scale_test], axis=1)
     return Xtrain, Xtest, ytrain, ytest
