@@ -5,14 +5,14 @@ def prepData(df):
     df = df.drop(df[df['Functioning Day'] == 'No'].index)
 
 	# dropping features
-    df.drop(['Hour', 'Functioning Day', 'Holiday', 'Dew point temperature(C)', 'Visibility (10m)', 'Snowfall (cm)', 'Humidity(%)'], axis = 1, inplace=True)
+    df.drop(['Dew point temperature(C)', 'Hour', 'Holiday', 'Visibility (10m)', 'Snowfall (cm)', 'Functioning Day', 'Humidity(%)'], axis = 1, inplace=True)
 
     # renaming to make things prettier
     df.rename(columns={
         'Wind speed (m/s)' : 'Wind Speed(m/s)',
         'Solar Radiation (MJ/m2)' : 'Solar Radiation(MJ/m2)'}, inplace=True)
 
-    # one-hot Encoding Seasons
+    # One-hot Encoding Seasons
     df = pd.get_dummies(df, columns=['Seasons'], drop_first=False, prefix='', prefix_sep='')
 
     # Converting booleans to integers
@@ -25,9 +25,9 @@ def prepData(df):
 		'Rented Bike Count' : 'sum',
 		'Temperature(C)' : 'mean',
 		'Wind Speed(m/s)': 'mean',
-		'Solar Radiation(MJ/m2)' : 'max', # there's no sun at night so taking average would skew this
-		'Rainfall(mm)' : 'sum', # there's a lot of hours with no rain so taking the sum works better here
-        'Spring' : 'first',
+		'Solar Radiation(MJ/m2)' : 'max',
+		'Rainfall(mm)' : 'sum', # taking the sum of rain makes the data more meaningful because we have a lot of hours without it, making it too imbalanced if we avg, this might help
+		'Spring' : 'first',
 		'Summer' : 'first',
         'Autumn' : 'first',
 		'Winter' : 'first',
@@ -35,6 +35,6 @@ def prepData(df):
 	}
     df = df.groupby('Date').agg(agg_dict) # turning hourly data into daily data
 
-    # creating interaction feature for each Summer * Temperature
+    # Creating interaction feature for each Summer * Temperature
     df["Summer*Temp"] = df["Summer"] * df["Temperature(C)"] 
     return df

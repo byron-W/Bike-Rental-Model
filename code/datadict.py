@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-file_path = '/Users/kenzyahmed/Desktop/CDS303/bike.xlsx'
+file_path = '../data/bike.xlsx'
 df = pd.read_excel(file_path, sheet_name='SeoulBikeData')
 
 def create_data_dictionary(data):
@@ -23,7 +23,7 @@ def create_data_dictionary(data):
         rows.append({
             "Index": idx,
             "Feature Name": column,
-            "Description": "...",  # will add descriptions later
+            "Description": "...",  # will add descriptions manually
             "Data Type": col_type,
             "Categorical/Numerical": var_type,
             "Missing Values": col.isnull().sum(),
@@ -36,7 +36,7 @@ def create_data_dictionary(data):
 data_dict_df = create_data_dictionary(df)
 
 
-output_path = '/Users/kenzyahmed/Desktop/CDS303/data_dictionary_output.csv'
+output_path = '../data/data_dict.xlsx'
 data_dict_df.to_csv(output_path, index=False)
 
 

@@ -1,0 +1,2 @@
+do this -> pip freeze > requirements.txt
+also inverse for equation
