@@ -6,9 +6,8 @@ This project forecasts bike rental demand using primarily weather and some time-
 - Source: [UCI Machine Learning Repository](https://doi.org/10.24432/C5F62R)
 - Features: Temperature, Humidity, Wind Speed, etc.
 - Target: Rented Bike Count
-## Models Used
+## Model Used
 - Huber Regressor
-- Extra Trees Regressor
 ## Evaluation
 - Best RMSE: **3256.63**
 - Best R²: **0.8895**
