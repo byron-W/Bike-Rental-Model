@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 file_path = '../data/bike.xlsx'
 df = pd.read_excel(file_path, sheet_name='SeoulBikeData')
 
@@ -27,7 +26,7 @@ def create_data_dictionary(data):
             "Data Type": col_type,
             "Categorical/Numerical": var_type,
             "Missing Values": col.isnull().sum(),
-            "# Unique Values": unique_count,
+            "Unique Values": unique_count,
             "Example Value": example
         })
 
@@ -35,8 +34,5 @@ def create_data_dictionary(data):
 
 data_dict_df = create_data_dictionary(df)
 
-
-output_path = '../data/data_dict.xlsx'
+output_path = '../data/data_dict.csv'
 data_dict_df.to_csv(output_path, index=False)
-
-

@@ -1,0 +1,15 @@
+Index,Feature Name,Description,Data Type,Categorical/Numerical,Missing Values,Unique Values,Example Value
+0,Date,Date when data was recorded,object,Categorical,0,365,19/06/2018
+1,Rented Bike Count,Number of bikes rented on a given date and hour,int64,Numerical,0,2166,3556
+2,Hour,Hour of the day (0-23) during which data was recorded,int64,Numerical,0,24,18
+3,Temperature(°C),Temperature recorded at given hour in Celcius,float64,Numerical,0,546,24.1
+4,Humidity(%),Percentage of humidity in the air,int64,Numerical,0,90,57
+5,Wind speed (m/s),Wind speed in given hour in meters per second,float64,Numerical,0,65,2.9
+6,Visibility (10m),Visibility level per 10 meters,int64,Numerical,0,1789,1301
+7,Dew point temperature(°C),Dew point temperature in given hour in Celcius,float64,Numerical,0,556,15.0
+8,Solar Radiation (MJ/m2),Total solar radiation per hour in megajoules per square meter,float64,Numerical,0,345,0.56
+9,Rainfall(mm),Amount of rainfall in millimeters,float64,Numerical,0,61,0.0
+10,Snowfall (cm),Amount of snowfall in centimeters,float64,Numerical,0,51,0.0
+11,Seasons,Season during which data was recorded,object,Categorical,0,4,Summer
+12,Holiday,Indicates whether there was a holiday,object,Categorical,0,2,No Holiday
+13,Functioning Day,Whether bike-rental service was operational that day,object,Categorical,0,2,Yes

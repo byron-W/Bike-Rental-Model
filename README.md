@@ -11,22 +11,26 @@ This project forecasts bike rental demand using primarily weather and some time-
 ## Evaluation
 - Best RMSE: **3256.63**
 - Best R²: **0.8895**
-- Visualizations of model performance in `\final_model\`
+- Visualizations of model performance in `\visualizations`
 ## Files
-- `\code\`: Exploration of data and modeling
-- `\data\`: Dataset and data dictionary
-- `\final_report\`: Detailed final report
-- `\final_model\`: Final model with visualizations
-- `requirements.txt`: List of dependencies
+- `\code`: Exploration of data and modeling
+- `\data`: Dataset and data dictionary
+- `\model\report.pdf`: Detailed final report
+- `\model\model.ipynb`: Final model with visualizations
+- `\model\requirements.txt`: List of dependencies
 ## Running the model
 1. Clone the repository
 ```bash
-git clone https://github.com/byron-W/CDS-303
-cd CDS-303/final_model
+git clone https://github.com/byron-W/Bike-Rental-Model
+cd model
 ```
 2. Install dependencies
 `pip install -r requirements.txt`
 3. Launch Jupyter Notebook:
 `jupyter model.ipynb`
 
-**DISCLAIMER:** Initially this was a repository for the group project in my CDS303 Data-Mining class, but since I did all the exploration, modeling, and overall coding for our group, this is the model based off that work. 
+## Model Workflow
+![workflow of data mining process](./visualizations/workflow.png)
+
+---
+**DISCLAIMER:** Initially this was a repository for the group project in my CDS303 Data-Mining class, but since I did all the exploration, modeling, and overall coding for our group, this is the model based off that work.
